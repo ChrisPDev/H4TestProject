@@ -1,0 +1,6 @@
+@H4TestProjectAPI_HostAddress = http://localhost:5139
+
+GET {{H4TestProjectAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
