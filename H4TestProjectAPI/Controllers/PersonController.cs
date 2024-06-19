@@ -67,8 +67,10 @@ namespace H4TestProjectAPI.Controllers
         {
             // Generate PersonalId, set CreatedAt and UpdatedAt timestamps
             person.PersonalId = GeneratePersonalId(person.Gender);
-            person.CreatedAt = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, _danishTimeZone);
-            person.UpdatedAt = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, _danishTimeZone);
+            //person.CreatedAt = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, _danishTimeZone);
+            //person.UpdatedAt = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, _danishTimeZone);
+            person.CreatedAt = DateTime.UtcNow.AddHours(2);
+            person.UpdatedAt = DateTime.UtcNow.AddHours(2);
 
             // Add the person to the database and save changes
             _context.Persons.Add(person);
@@ -99,7 +101,8 @@ namespace H4TestProjectAPI.Controllers
             // Update the person's FirstName, LastName, and UpdatedAt timestamp
             existingPerson.FirstName = person.FirstName;
             existingPerson.LastName = person.LastName;
-            existingPerson.UpdatedAt = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, _danishTimeZone);
+            //existingPerson.UpdatedAt = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, _danishTimeZone);
+            existingPerson.UpdatedAt = DateTime.UtcNow.AddHours(2);
 
             // Set the entity state to modified and save changes
             _context.Entry(existingPerson).State = EntityState.Modified;
